@@ -1,2 +1,5 @@
 # Global rule:
 *           @pwjuma/secretteam
+
+# Admin 
+/admin/admin_parameters.json @jumapeter
