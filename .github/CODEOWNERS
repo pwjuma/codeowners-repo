@@ -1,3 +1,4 @@
 # Global rule:
-
-*     @pwjuma/reviewers
+*           @pwjuma/reviewers
+/apps/
+/patch
