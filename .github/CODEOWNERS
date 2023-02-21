@@ -1,6 +1,6 @@
 # Global rule:
 
 *     @pwjuma/reviewers
-*.js   @chaimoto
+*.js   @chaimoto @pwjuma/reviewers
 *.ts   @jinasina
 
