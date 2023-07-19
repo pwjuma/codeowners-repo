@@ -1,6 +1,656 @@
-# Global rule:
 
-*     @pwjuma/reviewers
-*.js   @chaimoto @pwjuma/reviewers
-*.ts   @jinasina
+# ░██╗░░░░░░░██╗░█████╗░██████╗░███╗░░██╗██╗███╗░░██╗░██████╗░
+# ░██║░░██╗░░██║██╔══██╗██╔══██╗████╗░██║██║████╗░██║██╔════╝░
+# ░╚██╗████╗██╔╝███████║██████╔╝██╔██╗██║██║██╔██╗██║██║░░██╗░
+# ░░████╔═████║░██╔══██║██╔══██╗██║╚████║██║██║╚████║██║░░╚██╗
+# ░░╚██╔╝░╚██╔╝░██║░░██║██║░░██║██║░╚███║██║██║░╚███║╚██████╔╝
+# ░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚═╝░░╚══╝░╚═════╝░
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░░░
+# ░░░░ Read `.github/codeowners.md`
+# ░░░░ before working with CODEOWNERS file
+# ░░░░
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
+# globals
+## frontend - v2
+/client/public/app/ @juroteam/platform
+
+/.vscode/ @juroteam/platform
+/.devcontainer/ @juroteam/platform
+/.github/ @juroteam/sre @juroteam/platform
+
+# CODEOWNERS do not need owners
+/.github/CODEOWNERS
+
+docker* @juroteam/platform @juroteam/sre
+Dockerfile* @juroteam/platform @juroteam/sre
+.gitpod* @juroteam/platform
+
+dangerfile.js @juroteam/platform
+/scripts/gitpod/ @juroteam/platform
+/config/ @juroteam/platform
+/app.ts @juroteam/platform
+/app-dev-srv.ts @juroteam/platform
+
+/migrations/ @juroteam/platform @juroteam/sre
+
+# API
+## API is owned by backend team by default
+/api/ @juroteam/backend
+
+## API Team Platform
+/api/account/ @juroteam/platform
+/api/acl/ @juroteam/platform
+/api/admin/ @juroteam/platform
+/api/auth/ @juroteam/platform
+/api/feature-flags/ @juroteam/platform
+/api/user-group/ @juroteam/platform
+/api/image/ @juroteam/platform
+/api/metrics/ @juroteam/platform
+/api/payment/ @juroteam/platform
+/api/permissions/ @juroteam/platform
+/api/sessions/ @juroteam/platform
+/api/team-members/ @juroteam/platform
+/api/typescript/ @juroteam/platform
+/api/util/ @juroteam/platform
+/api/websocket/ @juroteam/platform
+
+## API Team Editor
+/api/comments/ @juroteam/editor
+/api/editor/ @juroteam/editor
+/api/util/clients/docx-service.ts @juroteam/editor
+/api/util/segment/comment-events.ts @juroteam/editor
+
+/api/onboarding/ @juroteam/contract-creation
+
+## API - Team Contract Collaboration
+/api/contract/ @juroteam/contract-collaboration
+/api/contract-approval/ @juroteam/contract-collaboration
+/api/contract-versions/ @juroteam/contract-collaboration
+/api/reminders/ @juroteam/contract-collaboration @juroteam/backend-core
+/api/contract-pdf/ @juroteam/contract-collaboration @juroteam/platform
+/api/notifications/ @juroteam/contract-collaboration
+
+## API - Team Contract Repository
+/api/activity/ @juroteam/contract-repository
+/api/analytics/ @juroteam/contract-repository
+/api/contract/v3/archive/ @juroteam/contract-repository
+/api/contract-select/ @juroteam/contract-repository
+/api/dashboard/ @juroteam/contract-repository
+/api/org/ @juroteam/contract-repository
+/api/search/ @juroteam/contract-repository @juroteam/platform
+/api/sendgrid-hooks/ @juroteam/contract-repository
+/api/team/ @juroteam/contract-repository
+/api/mass-actions/ @juroteam/contract-repository
+/api/mass-actions/mass-creation/ @juroteam/contract-collaboration
+/api/mass-actions/mass-upload-simple/ @juroteam/contract-collaboration
+/api/mass-actions/mass-import-google-drive/ @juroteam/contract-collaboration
+/api/mass-actions/mail-import/ @juroteam/contract-collaboration
+
+## API - Team Integrations
+/api/hubspot/ @juroteam/integrations
+/api/integration/ @juroteam/integrations
+/api/xapi/ @juroteam/integrations
+/api/auth/xapi.ts @juroteam/integrations
+
+/api/integration/saml/ @juroteam/platform
+/api/integration/scim/ @juroteam/platform
+/api/integration/docusign/ @juroteam/platform
+
+### API Contract V3
+/api/contract/v3/doc-api.ts @juroteam/editor
+/api/contract/v3/docx/ @juroteam/editor
+/api/contract/v3/overlay-doc-elements-api.ts @juroteam/editor
+/api/contract/v3/presence/ @juroteam/editor
+
+/api/contract/v3/post-processing-api.ts @juroteam/platform
+/api/contract/v3/internal-routes.ts @juroteam/platform
+
+/api/contract/v3/upload/ @juroteam/contract-creation
+
+/api/contract/v3/negotiation/ @juroteam/contract-collaboration
+/api/contract/v3/parser/ @juroteam/contract-collaboration
+/api/contract/v3/pdf/ @juroteam/contract-collaboration
+/api/contract/v3/signing/ @juroteam/contract-collaboration @juroteam/backend-core
+/api/contract/v3/utils/contract-availability.ts @juroteam/contract-collaboration
+/api/contract/v3/utils/qarules-validator.ts @juroteam/contract-creation
+/api/contract/v3/utils/doc-updates.ts @juroteam/editor
+
+/api/reminders/signing-reminders-api.ts @juroteam/contract-creation
+
+# Frontend
+
+## utils
+## should be on top, because Sentry need to look here as last resort.
+## For example, request.ts is too generic, earlier stack trace files are more important
+/client/public/app-react/src/utils/__mocks__/sentry.ts @juroteam/platform
+/client/public/app-react/src/utils/__snapshots__/dateNumberFormatting.test.ts.snap @juroteam/contract-creation
+/client/public/app-react/src/utils/access.ts @juroteam/platform
+/client/public/app-react/src/utils/acl.ts @juroteam/platform
+/client/public/app-react/src/utils/approvers* @juroteam/contract-collaboration
+/client/public/app-react/src/utils/autocompleteOff.ts @juroteam/frontend
+/client/public/app-react/src/utils/cancellablePromise* @juroteam/frontend
+/client/public/app-react/src/utils/checkNonOverridenMembers.ts @juroteam/contract-collaboration
+/client/public/app-react/src/utils/clipboard.js @juroteam/frontend
+/client/public/app-react/src/utils/combineStyles.js @juroteam/frontend
+/client/public/app-react/src/utils/common.ts @juroteam/frontend
+/client/public/app-react/src/utils/countries.ts @juroteam/frontend
+/client/public/app-react/src/utils/cropString* @juroteam/frontend
+/client/public/app-react/src/utils/date* @juroteam/contract-creation
+/client/public/app-react/src/utils/defer.ts @juroteam/frontend
+/client/public/app-react/src/utils/docx.ts @juroteam/contract-collaboration
+/client/public/app-react/src/utils/dom.ts @juroteam/frontend
+/client/public/app-react/src/utils/dragImage.ts @juroteam/editor
+/client/public/app-react/src/utils/errors.tsx @juroteam/frontend
+/client/public/app-react/src/utils/file.ts @juroteam/contract-collaboration
+/client/public/app-react/src/utils/fileListLimits.ts @juroteam/contract-collaboration
+/client/public/app-react/src/utils/generateVersionName* @juroteam/contract-collaboration
+/client/public/app-react/src/utils/getUserEmail* @juroteam/contract-collaboration
+/client/public/app-react/src/utils/i18n* @juroteam/platform
+/client/public/app-react/src/utils/index.ts @juroteam/frontend
+/client/public/app-react/src/utils/input-caret-control.ts @juroteam/frontend
+/client/public/app-react/src/utils/isSameObjectNotDeep.ts @juroteam/frontend
+/client/public/app-react/src/utils/joinStrings* @juroteam/frontend
+/client/public/app-react/src/utils/lodashExt.ts @juroteam/frontend
+/client/public/app-react/src/utils/password.js @juroteam/platform
+/client/public/app-react/src/utils/pdf.ts @juroteam/contract-collaboration
+/client/public/app-react/src/utils/performance/ @juroteam/platform
+/client/public/app-react/src/utils/pluralizeOrClean* @juroteam/frontend
+/client/public/app-react/src/utils/propertyTypeShapes.js @juroteam/frontend
+/client/public/app-react/src/utils/recording.ts @juroteam/platform
+/client/public/app-react/src/utils/request* @juroteam/platform
+/client/public/app-react/src/utils/sentry* @juroteam/platform
+/client/public/app-react/src/utils/storage/ @juroteam/frontend
+/client/public/app-react/src/utils/syncCache.ts @juroteam/frontend
+/client/public/app-react/src/utils/toggleSelection.js @juroteam/frontend
+/client/public/app-react/src/utils/url.js @juroteam/frontend
+/client/public/app-react/src/utils/useNumberFieldUtils.tsx @juroteam/contract-creation
+/client/public/app-react/src/utils/useNumberFieldUtils.test.tsx @juroteam/contract-creation
+/client/public/app-react/src/utils/MockRTSContextProvider.tsx @juroteam/contract-collaboration
+/client/public/app-react/src/utils/MockStoresContextProvider.tsx @juroteam/contract-collaboration
+/client/public/app-react/src/utils/partialDeep.tsx @juroteam/contract-collaboration
+
+# /client/ @juroteam/frontend
+/client/public/app-react/src/app.scss @juroteam/frontend
+
+## ui-kit
+/client/public/app-react/src/components/ui-kit/ @juroteam/frontend
+/client/public/app-react/src/components/ui-kit/DragNDropAttach/ @juroteam/contract-creation
+/client/public/app-react/src/ui-theme/ @juroteam/frontend
+/client/public/app-react/src/styles/ @juroteam/frontend
+
+/client/public/app-react/src/test-helpers/ @juroteam/frontend
+/client/public/app-react/src/test-helpers/prosemirror* @juroteam/editor
+/client/public/app-react/src/test-helpers/editorCommandUtils.ts @juroteam/editor
+/client/public/app-react/src/test-helpers/createProsemirrorJestState.ts @juroteam/editor
+
+## components
+
+/client/public/app-react/src/components/Cy/ @juroteam/frontend @juroteam/qa
+
+### components - Common
+/client/public/app-react/src/components/ButtonTextLabel/ @juroteam/frontend
+/client/public/app-react/src/components/ButtonToInput/ @juroteam/frontend
+/client/public/app-react/src/components/Card/ @juroteam/frontend
+/client/public/app-react/src/components/Checkbox/ @juroteam/frontend
+/client/public/app-react/src/components/ChipsRow/ @juroteam/frontend
+/client/public/app-react/src/components/ConditionalWrap/ @juroteam/frontend
+/client/public/app-react/src/components/ConfirmationDialog/ @juroteam/frontend
+/client/public/app-react/src/components/DefaultCard/ @juroteam/frontend
+/client/public/app-react/src/components/Dialog*/ @juroteam/frontend
+/client/public/app-react/src/components/DraggableGroup/ @juroteam/frontend
+/client/public/app-react/src/components/DropdownMenu/ @juroteam/frontend
+/client/public/app-react/src/components/ErrorBoundary/ @juroteam/frontend
+/client/public/app-react/src/components/FakeButtonText/ @juroteam/frontend
+/client/public/app-react/src/components/FakeInputText/ @juroteam/frontend
+/client/public/app-react/src/components/FormControl/ @juroteam/frontend
+/client/public/app-react/src/components/icons/ @juroteam/frontend
+/client/public/app-react/src/components/Icons*/ @juroteam/frontend
+/client/public/app-react/src/components/Input*/ @juroteam/frontend
+/client/public/app-react/src/components/Label/ @juroteam/frontend
+/client/public/app-react/src/components/Link/ @juroteam/frontend
+/client/public/app-react/src/components/LottieAnimation/ @juroteam/frontend
+/client/public/app-react/src/components/Menu*/ @juroteam/frontend
+/client/public/app-react/src/components/MobileScrollingTextBox/ @juroteam/frontend
+/client/public/app-react/src/components/Overlay*/ @juroteam/frontend
+/client/public/app-react/src/components/Progress*/ @juroteam/frontend
+/client/public/app-react/src/components/ScrollableBorderedContent/ @juroteam/frontend
+/client/public/app-react/src/components/Select/ @juroteam/frontend
+/client/public/app-react/src/components/SnackbarProvider/ @juroteam/frontend
+/client/public/app-react/src/components/Stub*/ @juroteam/frontend
+/client/public/app-react/src/components/StealthForm/ @juroteam/frontend
+/client/public/app-react/src/components/withForwardedRef/ @juroteam/frontend
+/client/public/app-react/src/components/withNotistack/ @juroteam/frontend
+/client/public/app-react/src/components/withProgress*/ @juroteam/frontend
+/client/public/app-react/src/features/index.ts @juroteam/frontend
+
+### components - Contract Creation Team
+/client/public/app-react/src/components/AddDocumentButton/ @juroteam/contract-creation
+/client/public/app-react/src/components/AddSmartfieldsDialog/ @juroteam/contract-creation
+/client/public/app-react/src/components/FieldReminder/ @juroteam/contract-creation
+/client/public/app-react/src/components/Onboarding/ @juroteam/contract-creation
+/client/public/app-react/src/components/WelcomeTour/ @juroteam/contract-creation
+/client/public/app-react/src/features/ContractCreation/ @juroteam/contract-creation
+/client/public/app-react/src/components/ContractCreation/ @juroteam/contract-creation
+/client/public/app-react/src/components/DateField/ @juroteam/contract-creation
+/client/public/app-react/src/components/ContractSmartFields/ @juroteam/contract-creation
+/client/public/app-react/src/components/EmailPreview/ @juroteam/contract-creation
+/client/public/app-react/src/components/Pickers/ @juroteam/contract-creation
+/client/public/app-react/src/components/QnA* @juroteam/contract-creation
+/client/public/app-react/src/components/ContractUnavailableStubPage/ @juroteam/contract-creation
+/client/public/app-react/src/containers/QnA* @juroteam/contract-creation
+/client/public/app-react/src/containers/StaticQAView/ @juroteam/contract-creation
+/client/public/app-react/src/features/SigningReminder/ @juroteam/contract-creation
+
+### components - Team Editor
+/client/public/app-react/src/components/ButtonToProsemirror/ @juroteam/editor
+/client/public/app-react/src/components/Comments/ @juroteam/editor
+/client/public/app-react/src/components/ContractEditor/ @juroteam/editor
+/client/public/app-react/src/components/ContractEditorStatus/ @juroteam/editor
+/client/public/app-react/src/components/ContractFontSelector/ @juroteam/editor
+/client/public/app-react/src/components/ContractPDFEditor/ @juroteam/editor
+/client/public/app-react/src/components/ContractPDFPreview/ @juroteam/editor
+/client/public/app-react/src/components/ContractPieceDoc/ @juroteam/editor
+/client/public/app-react/src/components/ContractRTSBottomLine/ @juroteam/editor
+/client/public/app-react/src/components/ContractRTSVersions/ @juroteam/editor
+/client/public/app-react/src/components/DragPersonIntoContract/ @juroteam/editor
+/client/public/app-react/src/components/EditorSmartfieldsDroppable/ @juroteam/editor
+/client/public/app-react/src/components/FakeSignatureBox/ @juroteam/editor
+/client/public/app-react/src/components/FakeSmartfieldBlock/ @juroteam/editor
+/client/public/app-react/src/components/KeyDownHandler/ @juroteam/editor
+/client/public/app-react/src/components/OnChildImagesLoaded/ @juroteam/editor
+/client/public/app-react/src/components/prosemirror/ @juroteam/editor
+/client/public/app-react/src/components/SmartfieldDragImage/ @juroteam/editor
+/client/public/app-react/src/components/Toolbox/ @juroteam/editor
+/client/public/app-react/src/components/ContractSavedBadge/ @juroteam/editor
+
+
+### components - Team Feature Scaling
+/client/public/app-react/src/components/ApprovalOrderedSelectedPeople/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/AsideMenu/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/AsideMenuToggleButton/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/Autosuggest/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ChangeContractTypeDialog/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractActionBar/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractApprovalActions/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractApproveOverlay/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractApproversList/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractApproversOverlay/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractCancelOrderOverlay/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractMoveDialog/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractOverlayComment/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRecipientsList/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRejectOverlay/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSActionBar/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSApprovers/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSHeader/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSLock/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSPartiesCTA/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSPartiesHeader/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSRecipients/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSSettings/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSSign/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSSummary/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractRTSTopBar/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractSettings/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractSignatories/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractSignatoriesOverlay/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractStatus/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractStatusSelect/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractTimeline/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractUnsignDialog/ @juroteam/contract-collaboration
+/client/public/app-react/src/containers/ContractView/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractViewButton/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractViewerIndicator/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractViewMessages/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ContractWillBecomeFullySignedDialog/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/EditableTitle/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ImportedDocumentModal/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/NegotiationModals/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/PartiesAccessLevelMenu/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/PeopleChip*/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/PeopleSelect*/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/SelectedPeople/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/SharingAfterSharing/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/SideBar/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/SideBarsWrapperRTS/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/SigningModal/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/Team*/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/ToggleBlock/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/TopBar*/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/TopBarAddOperations/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/TreeItem/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/UserAvatar/ @juroteam/contract-collaboration
+/client/public/app-react/src/containers/ContractVersionViewWrapper/ @juroteam/contract-collaboration
+/client/public/app-react/src/features/ContractCreation/ContractUploadingModal @juroteam/contract-collaboration
+/client/public/app-react/src/features/UploadAsVersion/ @juroteam/contract-collaboration
+/client/public/app-react/src/features/TopPanel/ @juroteam/contract-collaboration
+/client/public/app-react/src/features/Sidebars/ @juroteam/contract-collaboration
+/client/public/app-react/src/features/ThemeSwitcher/ @juroteam/contract-collaboration
+
+/client/public/app-react/src/analytics/ @juroteam/contract-repository
+/client/public/app-react/src/components/ActivityView/ @juroteam/contract-repository
+/client/public/app-react/src/components/AnalyticsView/ @juroteam/contract-repository
+/client/public/app-react/src/components/ArchiveDashboard/ @juroteam/contract-repository
+/client/public/app-react/src/components/AvatarUploader/ @juroteam/contract-repository
+/client/public/app-react/src/components/ContractCancelledStubPage/ @juroteam/contract-repository
+/client/public/app-react/src/components/ContractCard/ @juroteam/contract-repository
+/client/public/app-react/src/components/ContractsGrid/ @juroteam/contract-repository
+/client/public/app-react/src/components/ContractsList*/ @juroteam/contract-repository
+/client/public/app-react/src/components/ContractsTable/ @juroteam/contract-repository
+/client/public/app-react/src/components/ContractTeam/ @juroteam/contract-repository
+/client/public/app-react/src/components/CountrySelect/ @juroteam/contract-repository
+/client/public/app-react/src/components/CreateTemplateOverlay/ @juroteam/contract-repository
+/client/public/app-react/src/components/Dashboard*/ @juroteam/contract-repository
+/client/public/app-react/src/components/DashboardViewSwitcher/ @juroteam/contract-repository
+/client/public/app-react/src/components/FilteringControl/ @juroteam/contract-repository
+/client/public/app-react/src/components/FormattedDate/ @juroteam/contract-repository
+/client/public/app-react/src/components/InfoBanner/ @juroteam/contract-repository
+/client/public/app-react/src/components/ListHeaderSorting/ @juroteam/contract-repository
+/client/public/app-react/src/components/ListHeaderStatus/ @juroteam/contract-repository
+/client/public/app-react/src/components/MassActionsProgressCenter/ @juroteam/contract-repository
+/client/public/app-react/src/components/SearchInput/ @juroteam/contract-repository
+/client/public/app-react/src/components/Service/ @juroteam/contract-repository
+/client/public/app-react/src/components/SortingControl/ @juroteam/contract-repository
+/client/public/app-react/src/components/StateButton/ @juroteam/contract-repository
+/client/public/app-react/src/components/TableColumnHeader/ @juroteam/contract-repository
+/client/public/app-react/src/components/TemplatesDashboard/ @juroteam/contract-repository
+/client/public/app-react/src/components/TopBarSearch/ @juroteam/contract-repository
+
+### components - Platform
+/client/public/app-react/src/components/AngularBrowserRouter/ @juroteam/platform
+/client/public/app-react/src/components/AuditTrailPDFPreview/ @juroteam/platform
+/client/public/app-react/src/components/FeatureSwitcher/ @juroteam/platform
+/client/public/app-react/src/components/HelpCenter/ @juroteam/platform
+/client/public/app-react/src/components/NewAppVersionDialog/ @juroteam/platform
+/client/public/app-react/src/components/Payment*/ @juroteam/platform
+/client/public/app-react/src/components/SocialButton/ @juroteam/platform
+/client/public/app-react/src/components/TourHelpers/ @juroteam/platform
+/client/public/app-react/src/components/withUiRouterSync/ @juroteam/platform
+/client/public/app-react/src/features/LanguageSwitcher/ @juroteam/platform
+/client/public/app-react/src/features/TwoFactor/ @juroteam/platform
+/client/public/app-react/src/components/SigningSideProvider/ @juroteam/platform
+
+
+### components - Integrations
+/client/public/app-react/src/components/GreenhouseMappingView/ @juroteam/integrations
+/client/public/app-react/src/components/NestedGdriveTree/ @juroteam/integrations
+/client/public/app-react/src/components/HubspotIframe/ @juroteam/integrations
+/client/public/app-react/src/components/IntegrationIframe/ @juroteam/integrations
+/client/public/app-react/src/components/SalesforceIframe/ @juroteam/integrations
+
+### components - Sidebars
+/client/public/app-react/src/components/sidebars/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/sidebars/QnA* @juroteam/contract-creation
+/client/public/app-react/src/components/sidebars/Rules/ @juroteam/contract-creation
+/client/public/app-react/src/components/sidebars/SmartFields/ @juroteam/contract-creation
+/client/public/app-react/src/components/sidebars/Comments/ @juroteam/editor @juroteam/contract-collaboration
+/client/public/app-react/src/components/sidebars/Attachments/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/sidebars/ContractParties/ @juroteam/contract-collaboration
+/client/public/app-react/src/components/sidebars/MoreActions/ @juroteam/contract-collaboration
+### components - settings
+#### Settings - feature scaling default
+/client/public/app-react/src/components/SettingsView/ @juroteam/contract-repository
+
+#### Settings - Integrations
+/client/public/app-react/src/components/SettingsView/IntegrationsSettingsView/ @juroteam/integrations
+/client/public/app-react/src/components/SettingsView/IntegrationsSettingsView/IntegrationsDocuSign/ @juroteam/platform
+
+#### Settings - Contract Creation Team
+/client/public/app-react/src/components/SettingsView/OrgInformationView/ @juroteam/contract-creation
+/client/public/app-react/src/components/SettingsView/TeamsView/ @juroteam/contract-creation
+
+#### Settings - Contract Collaboration Team
+/client/public/app-react/src/components/SettingsView/ContractReaderView/ @juroteam/contract-collaboration
+
+## hooks
+/client/public/app-react/src/hooks/useIsOpen* @juroteam/frontend
+/client/public/app-react/src/hooks/__snapshots__/useIsOpen* @juroteam/frontend
+/client/public/app-react/src/hooks/index* @juroteam/frontend
+/client/public/app-react/src/hooks/types* @juroteam/frontend
+/client/public/app-react/src/hooks/useApi.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useCallbacks.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useClick.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useDisableScroll.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useEnforceVerticalBodyScroll.js @juroteam/frontend
+/client/public/app-react/src/hooks/useEscape.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useIsMounted.ts @juroteam/frontend
+/client/public/app-react/src/hooks/usePopperSelectClickAway.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useReaction.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useReactionToUseState.js @juroteam/frontend
+/client/public/app-react/src/hooks/useResizeObserver.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useStores.ts @juroteam/frontend
+/client/public/app-react/src/hooks/useUpdateEffect.ts @juroteam/frontend
+/client/public/app-react/src/index.js @juroteam/frontend
+
+/client/public/app-react/src/hooks/access/useIsAttachmentEditable.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/access/useIsPieceDocEditable.ts @juroteam/editor
+/client/public/app-react/src/hooks/access/useIsSelectedPersonDraggable.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/access/useIsSelectedPersonEditable.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/access/useIsSmartFieldEditable.ts @juroteam/contract-creation
+/client/public/app-react/src/hooks/useCountryCode.ts @juroteam/contract-creation
+/client/public/app-react/src/hooks/useDisableContractsActions.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useDownloadDoc.ts @juroteam/editor
+/client/public/app-react/src/hooks/useDownloadPDF.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useFormFields.ts @juroteam/contract-repository
+/client/public/app-react/src/hooks/useSortingOptionsText.ts @juroteam/contract-repository
+/client/public/app-react/src/hooks/useHandleSendForSigningClick.js @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useHandleSignDialogOpen.js @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useHandleSignError.js @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useSendUserContractEvent.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useShowSignatoriesInParties.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useSmartfieldDragging* @juroteam/contract-creation
+/client/public/app-react/src/hooks/useSubscribeToFlag.ts @juroteam/platform
+
+
+/client/public/app-react/src/hooks/useRunTour.ts @juroteam/platform
+/client/public/app-react/src/hooks/useUploadContract.ts @juroteam/contract-collaboration
+/client/public/app-react/src/hooks/useWidth.ts @juroteam/editor
+
+## i18n
+/client/public/app-react/src/i18n/ @juroteam/platform
+
+## contexts
+/client/public/app-react/src/contexts/index.ts @juroteam/frontend
+
+/client/public/app-react/src/contexts/RTSContext.ts @juroteam/contract-collaboration
+/client/public/app-react/src/contexts/ContractActionsContext.ts @juroteam/contract-collaboration
+
+/client/public/app-react/src/contexts/DragDrop/ @juroteam/contract-creation
+/client/public/app-react/src/contexts/LocaleContext.ts @juroteam/contract-creation
+/client/public/app-react/src/contexts/LocaleProvider.tsx @juroteam/contract-creation
+
+/client/public/app-react/src/contexts/UiConfigContext.tsx @juroteam/platform
+
+## data transformers
+/client/public/app-react/src/dataTransformers/activityLog.js @juroteam/contract-collaboration
+/client/public/app-react/src/dataTransformers/approvals.js @juroteam/contract-collaboration
+
+## services
+/client/public/app-react/src/services/index.ts @juroteam/frontend
+/client/public/app-react/src/services/BaseService.ts @juroteam/frontend
+/client/public/app-react/src/services/DebounceService.js @juroteam/frontend
+/client/public/app-react/src/services/DocumentHashTaskQueue* @juroteam/frontend
+/client/public/app-react/src/services/RequestInterceptors.ts @juroteam/frontend
+/client/public/app-react/src/services/types.ts @juroteam/frontend
+/client/public/app-react/src/services/__mocks__ @juroteam/frontend
+
+/client/public/app-react/src/services/ActivityService.ts @juroteam/contract-repository
+/client/public/app-react/src/services/AnalyticsService.ts @juroteam/contract-repository
+/client/public/app-react/src/services/ApprovalService.ts @juroteam/contract-collaboration
+/client/public/app-react/src/services/AppVersionOutdatedInterceptor.ts @juroteam/platform
+/client/public/app-react/src/services/CommentsService.ts @juroteam/editor
+/client/public/app-react/src/services/ConditionService.ts @juroteam/contract-creation
+/client/public/app-react/src/services/ContractImportService.ts @juroteam/contract-creation @juroteam/contract-collaboration
+/client/public/app-react/src/services/ContractsArchiveService.js @juroteam/contract-repository
+/client/public/app-react/src/services/ContractsCollectionService* @juroteam/contract-repository
+/client/public/app-react/src/services/ContractService* @juroteam/contract-creation
+/client/public/app-react/src/services/ContractVersionService.ts @juroteam/contract-collaboration
+/client/public/app-react/src/services/DashboardService.ts @juroteam/contract-repository
+/client/public/app-react/src/services/EditorService* @juroteam/editor
+/client/public/app-react/src/services/FeatureFlagService.ts @juroteam/platform
+/client/public/app-react/src/services/GreenhouseService.js @juroteam/integrations
+/client/public/app-react/src/services/IntegrationService.ts @juroteam/integrations
+/client/public/app-react/src/services/MassActionsService.ts @juroteam/contract-repository
+/client/public/app-react/src/services/NotificationsService.ts @juroteam/contract-collaboration
+/client/public/app-react/src/services/OrgService.ts @juroteam/contract-repository
+/client/public/app-react/src/services/PaymentService.ts @juroteam/platform
+/client/public/app-react/src/services/ReminderService/ @juroteam/contract-creation
+/client/public/app-react/src/services/RestrictionsService.ts @juroteam/platform
+/client/public/app-react/src/services/SearchService.ts @juroteam/contract-repository
+/client/public/app-react/src/services/ToursService.ts @juroteam/platform
+/client/public/app-react/src/services/UserService.ts @juroteam/platform
+/client/public/app-react/src/services/DocuSignIntegrationService.ts @juroteam/platform
+/client/public/app-react/src/services/SessionService.ts @juroteam/platform
+/client/public/app-react/src/services/QaRulesService @juroteam/contract-creation
+/client/public/app-react/src/services/UserGroupsService/ @juroteam/contract-repository
+/client/public/app-react/src/services/AIService.ts @juroteam/contract-collaboration
+
+## stores
+/client/public/app-react/src/stores/readme.md @juroteam/frontend
+/client/public/app-react/src/stores/__mocks__ @juroteam/frontend
+
+/client/public/app-react/src/stores/ActivityStore.js @juroteam/contract-repository
+/client/public/app-react/src/stores/AnalyticsStore.ts @juroteam/contract-repository
+/client/public/app-react/src/stores/ApprovalStore/ @juroteam/contract-collaboration
+/client/public/app-react/src/stores/AttachmentsStore.ts @juroteam/contract-collaboration
+/client/public/app-react/src/stores/AuditTrailStore.ts @juroteam/platform
+/client/public/app-react/src/stores/ConditionStore* @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractActionsStore.ts @juroteam/contract-repository
+/client/public/app-react/src/stores/ContractActivityStore.ts @juroteam/contract-repository
+/client/public/app-react/src/stores/ContractCreationStore/ @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractRootStore.ts @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractsArchiveStore* @juroteam/contract-repository
+/client/public/app-react/src/stores/ContractsCollectionStore* @juroteam/contract-repository
+/client/public/app-react/src/stores/ContractsDragPieceDocStore.ts @juroteam/editor
+/client/public/app-react/src/stores/ContractStore* @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractUiStore* @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractUpdate/ContractQaFillStore/ @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractUpdate/ContractSignatoriesStore.ts @juroteam/contract-collaboration
+/client/public/app-react/src/stores/ContractUpdate/ContractUpdateStore/ @juroteam/contract-creation
+/client/public/app-react/src/stores/ContractVersionStore* @juroteam/contract-collaboration
+/client/public/app-react/src/stores/CounterpartySmartfieldsStore.js @juroteam/contract-creation
+/client/public/app-react/src/stores/Dashboard* @juroteam/contract-repository
+/client/public/app-react/src/stores/DraftSummaryStore.ts @juroteam/contract-creation
+/client/public/app-react/src/stores/FeatureFlagStore.ts @juroteam/platform
+/client/public/app-react/src/stores/CommentsStore @juroteam/editor
+/client/public/app-react/src/stores/IntegrationStore.ts @juroteam/integrations
+/client/public/app-react/src/stores/MassCreationStore.ts @juroteam/contract-repository
+/client/public/app-react/src/stores/NegotiationStore/ @juroteam/contract-collaboration
+/client/public/app-react/src/stores/NotificationsStore.ts @juroteam/contract-collaboration
+/client/public/app-react/src/stores/PaymentStore/ @juroteam/platform
+/client/public/app-react/src/stores/PermissionsStore/ @juroteam/platform
+/client/public/app-react/src/stores/QnA* @juroteam/contract-creation
+/client/public/app-react/src/stores/ReaderSettingsStore.ts @juroteam/platform
+/client/public/app-react/src/stores/RecipientsStore/ @juroteam/contract-collaboration
+/client/public/app-react/src/stores/ReviewersStore/ @juroteam/contract-collaboration
+/client/public/app-react/src/stores/ReminderStore/ @juroteam/contract-creation
+/client/public/app-react/src/stores/RestrictionsStore/ @juroteam/platform
+/client/public/app-react/src/stores/RTS* @juroteam/contract-creation
+/client/public/app-react/src/stores/SearchStore* @juroteam/contract-repository
+/client/public/app-react/src/stores/SessionStore.ts @juroteam/platform
+/client/public/app-react/src/stores/SmartfieldsStore* @juroteam/contract-creation
+/client/public/app-react/src/stores/TemplatesCollectionStore* @juroteam/contract-repository
+/client/public/app-react/src/stores/ToursStore.tsx @juroteam/platform
+/client/public/app-react/src/stores/PresenceStore* @juroteam/editor
+/client/public/app-react/src/stores/UserGroupsStore/ @juroteam/contract-repository
+/client/public/app-react/src/stores/AIStore/ @juroteam/contract-collaboration
+
+## ng routes
+/client/public/app-react/src/ng/react-aside-menu.js @juroteam/frontend
+/client/public/app-react/src/ng/react-resource-not-found-stub-page-component.js @juroteam/frontend
+/client/public/app-react/src/ng/react-service-component.js @juroteam/frontend
+/client/public/app-react/src/ng/routes/hooks.js @juroteam/frontend
+
+/client/public/app-react/src/ng/hubspot-iframe/ @juroteam/integrations
+/client/public/app-react/src/ng/salesforce-iframe/ @juroteam/integrations
+/client/public/app-react/src/ng/interceptors/app-version-header-interceptor.js @juroteam/platform
+/client/public/app-react/src/ng/interceptors/redirect-to-error-page-interceptor.js @juroteam/platform
+/client/public/app-react/src/ng/interceptors/team-id-header-interceptor.js @juroteam/platform
+/client/public/app-react/src/ng/react-activity-page-component.js @juroteam/contract-repository
+/client/public/app-react/src/ng/react-analytics-page-component.js @juroteam/contract-repository
+/client/public/app-react/src/ng/react-approval-q-a-component.js @juroteam/contract-collaboration
+/client/public/app-react/src/ng/react-audit-trail-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-contract* @juroteam/contract-collaboration
+/client/public/app-react/src/ng/react-counterparty-q-a-component.js @juroteam/contract-creation
+/client/public/app-react/src/ng/react-create-contract-q-a-component.js @juroteam/contract-creation
+/client/public/app-react/src/ng/react-create-template-q-a-component.js @juroteam/contract-creation
+/client/public/app-react/src/ng/react-dashboard-component.js @juroteam/contract-repository
+/client/public/app-react/src/ng/react-invited-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-login-2fa-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-login-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-not-a-customer-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-org-removed.js @juroteam/platform
+/client/public/app-react/src/ng/react-reset-password-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-reset-password-request-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-settings-view-component.js @juroteam/contract-repository
+/client/public/app-react/src/ng/react-shared-q-a-component.js @juroteam/contract-creation
+/client/public/app-react/src/ng/react-signup-component.js @juroteam/platform
+/client/public/app-react/src/ng/react-templates-dashboard-component.js @juroteam/contract-repository
+/client/public/app-react/src/ng/routes/approval.js @juroteam/contract-collaboration
+/client/public/app-react/src/ng/routes/audit-trail.js @juroteam/platform
+/client/public/app-react/src/ng/routes/counterparty-signing.js @juroteam/contract-collaboration
+/client/public/app-react/src/ng/routes/hubspot/ @juroteam/integrations
+/client/public/app-react/src/ng/routes/invite.js @juroteam/platform
+/client/public/app-react/src/ng/routes/login-2fa.js @juroteam/platform
+/client/public/app-react/src/ng/routes/login.js @juroteam/platform
+/client/public/app-react/src/ng/routes/session.js @juroteam/platform
+/client/public/app-react/src/ng/routes/settings.js @juroteam/contract-repository
+/client/public/app-react/src/ng/routes/signup.js @juroteam/platform
+/client/public/app-react/src/ng/routes/startup.js @juroteam/platform
+/client/public/app-react/src/ng/routes/templateEditor.js @juroteam/contract-creation
+/client/public/app-react/src/ng/routes/zzzz-global-sharing.js @juroteam/contract-collaboration
+
+## New client side routing
+/client/public/app-react/src/navigating/ @juroteam/platform @juroteam/frontend-core
+
+## Frontend functionality strictly related to backend
+/client/public/app-react/src/stores/OrgStore.* @juroteam/contract-collaboration @juroteam/backend-core
+/client/public/app-react/src/stores/SocketStore.ts @juroteam/platform @juroteam/backend-core
+/client/public/app-react/src/stores/UiStore.ts @juroteam/contract-repository @juroteam/backend-core
+/client/public/app-react/src/stores/UserStore.ts @juroteam/platform @juroteam/backend-core
+
+## Frontend Models
+/client/public/app-react/src/models/ @juroteam/backend-core
+/client/public/app-react/src/models/Payment.ts @juroteam/contract-creation
+
+## interceptors
+/client/public/app-react/src/ng/interceptors/tour-redirect-to-template-interceptor.js @juroteam/contract-creation
+
+/client/public/app-react/src/declarations.ts @juroteam/platform
+/client/public/app-react/src/globals.d.ts @juroteam/platform
+
+/client/public/app-react/src/tsconfig* @juroteam/platform
+
+/utils/transformers/ @juroteam/contract-repository
+
+## E2E tests
+/test/playwright/ @juroteam/qa
+/test/pw-global-setup.ts @juroteam/qa
+playwright.config.ts @juroteam/qa
+
+## Integration tests
+/test/integration-tests/contract/upload-docx-contracts-integration-test.ts @juroteam/contract-collaboration
+/test/integration-tests/contract/imported-pdf-contracts-integration-test.ts @juroteam/contract-collaboration
+
+# No owners for api models
+/api/models
+
+# ░██╗░░░░░░░██╗░█████╗░██████╗░███╗░░██╗██╗███╗░░██╗░██████╗░
+# ░██║░░██╗░░██║██╔══██╗██╔══██╗████╗░██║██║████╗░██║██╔════╝░
+# ░╚██╗████╗██╔╝███████║██████╔╝██╔██╗██║██║██╔██╗██║██║░░██╗░
+# ░░████╔═████║░██╔══██║██╔══██╗██║╚████║██║██║╚████║██║░░╚██╗
+# ░░╚██╔╝░╚██╔╝░██║░░██║██║░░██║██║░╚███║██║██║░╚███║╚██████╔╝
+# ░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚═╝░░╚══╝░╚═════╝░
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+# ░░░░
+# ░░░░ Read `.github/codeowners.md`
+# ░░░░ before working with CODEOWNERS file
+# ░░░░ At least remember - the CODEOWNERS are read FROM BOTTOM TO TOP
+# ░░░░
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+
 
